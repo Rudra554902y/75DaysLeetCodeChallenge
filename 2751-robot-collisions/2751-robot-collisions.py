@@ -23,7 +23,6 @@ class Solution:
                         alive[i]=alive[t]=False
                         s.pop()
                         break
-            print(s)
         return [health[i] for i in range(n) if alive[i]]
         # n=len(directions)
         # order=sorted(range(n),key=lambda i: positions[i])
