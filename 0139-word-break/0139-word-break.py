@@ -1,10 +1,13 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         m=len(s)
-        @lru_cache(None)
+        memo={}
+        # @lru_cache(None)
         def helper(idx):
             if idx==m:
                 return True
+            if idx in memo:
+                return memo[idx]
             for word in wordDict:
                 i=0
                 a=idx
@@ -14,6 +17,8 @@ class Solution:
                     i+=1
                 if i==n:
                     if helper(idx+n):
+                        memo[idx]=True
                         return True
+            memo[idx]=False
             return False
         return helper(0)
